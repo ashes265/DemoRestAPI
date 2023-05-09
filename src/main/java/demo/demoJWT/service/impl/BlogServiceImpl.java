@@ -86,10 +86,10 @@ public class BlogServiceImpl implements BlogService {
     }
 
 
-    @Scheduled(fixedRate = 4000)
-    public void checkSizeBlogWithFixRate() {
-        System.out.println("Size hien tai: " + blogTemplate.opsForHash().keys("blog").size());
-    }
+//    @Scheduled(fixedRate = 4000)
+//    public void checkSizeBlogWithFixRate() {
+//        System.out.println("Size hien tai: " + blogTemplate.opsForHash().keys("blog").size());
+//    }
 
     @Scheduled(cron = "0 0 0 * * *")
     public void updateListBlogAfterDelete() {

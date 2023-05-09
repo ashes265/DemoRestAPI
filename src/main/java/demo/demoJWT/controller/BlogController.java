@@ -14,8 +14,10 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ReflectionUtils;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.*;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +34,20 @@ public class BlogController {
 
     private List<Long> listIdDelete;
     @GetMapping("/list")
-    public ResponseEntity<?> getAll() {
+    public ResponseEntity<?> getAll() throws IOException {
+        File file = ResourceUtils.getFile("classpath:PracticeKey.txt");
+        System.out.println(file.getName());
+//        InputStream in = new FileInputStream(file);
+        BufferedReader br
+                = new BufferedReader(new FileReader(file));
+        String st;
+        // Condition holds true till
+        // there is character in a string
+        while ((st = br.readLine()) != null)
+
+            // Print the string
+            System.out.println(st);
+
         if(blogTemplate.opsForHash().entries("blogs")!=null){
             //in case list already exist in cache redis
             return ResponseEntity.ok().body(blogTemplate.opsForHash().entries("blog"));
