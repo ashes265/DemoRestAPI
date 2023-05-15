@@ -11,15 +11,15 @@ import java.util.List;
 @RequestMapping("/products")
 @RequiredArgsConstructor
 public class ProductController {
-//    private final ProductRepository productRepository;
-//    @PostMapping
-//    public Product createNew(@RequestBody Product product){
-//        return productRepository.save(product);
-//    }
-//
-//    @GetMapping
-//    public List<Product> getAll(){
-//        return productRepository.getAll();
-//    }
+    private final ProductRepository productRepository;
+    @PostMapping
+    public Product createNew(@RequestBody Product product){
+        return productRepository.save(product);
+    }
+
+    @GetMapping
+    public List<Product> getAll(){
+        return null;
+    }
 
 }
